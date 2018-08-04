@@ -86,6 +86,6 @@ RUN set -ex; \
 		\) -exec rm -rf '{}' +; \
 	rm -f get-pip.py
 
-RUN pip install speedtest-cli influxdb
+RUN pip install speedtest-cli influxdb simplejson
 
 CMD ["python3"]

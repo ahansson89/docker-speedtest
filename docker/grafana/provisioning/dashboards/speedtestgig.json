@@ -118,9 +118,9 @@
         }
       ],
       "thresholds": "300,600",
-      "timeFrom": "1w",
+      "timeFrom": null,
       "timeShift": null,
-      "title": "Average download speed / week",
+      "title": "Average download speed",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -233,9 +233,9 @@
         }
       ],
       "thresholds": "300,600",
-      "timeFrom": "1w",
+      "timeFrom": null,
       "timeShift": null,
-      "title": "Average upload speed / week",
+      "title": "Average upload speed",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -348,9 +348,9 @@
         }
       ],
       "thresholds": "20,50",
-      "timeFrom": "1w",
+      "timeFrom": null,
       "timeShift": null,
-      "title": "Average ping latency / week",
+      "title": "Average ping latency",
       "type": "singlestat",
       "valueFontSize": "150%",
       "valueMaps": [
@@ -369,7 +369,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "InfluxDB",
-      "fill": 1,
+      "fill": 0,
       "gridPos": {
         "h": 8,
         "w": 24,
@@ -477,6 +477,95 @@
             ]
           ],
           "tags": []
+        },
+        {
+          "$$hashKey": "object:420",
+          "alias": "Download Trend",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "download",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "40"
+                ],
+                "type": "moving_average"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "$$hashKey": "object:456",
+          "alias": "Upload Trend",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "upload",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "40"
+                ],
+                "type": "moving_average"
+              }
+            ]
+          ],
+          "tags": []
         }
       ],
       "thresholds": [],
@@ -499,6 +588,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:600",
           "format": "Mbits",
           "label": null,
           "logBase": 1,
@@ -507,6 +597,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:601",
           "format": "Mbits",
           "label": null,
           "logBase": 1,
@@ -771,5 +862,5 @@
   "timezone": "",
   "title": "Speedtest results - 1Gb/s",
   "uid": "0A6hxROiz",
-  "version": 1
+  "version": 52933
 }
