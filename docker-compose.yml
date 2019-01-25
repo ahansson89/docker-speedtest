@@ -4,8 +4,11 @@ services:
   influxdb:
     restart: always
     image: influxdb:1.5
+    container_name: influxdb
     volumes:
       - "./data/influxdb/:/var/lib/influxdb"
+    ports:
+      - "${INFLUXDB_PORT}:8086"
     environment:
       - "INFLUXDB_ADMIN_USER=admin"
       - "INFLUXDB_ADMIN_PASSWORD=password"
@@ -14,6 +17,7 @@ services:
   grafana:
     restart: always
     image: grafana/grafana:5.1.0
+    container_name: grafana
     volumes:
       - "./docker/grafana/provisioning:/etc/grafana/provisioning"
     ports:
@@ -27,8 +31,10 @@ services:
 
   speedtest:
     restart: always
-    build: ./docker/py-speedtest
+    container_name: speedtest
+    build: ./docker/speedtest
     links:
       - "influxdb:influxdb"
     environment:
       - "SPEEDTEST_INTERVAL=${SPEEDTEST_SPEEDTEST_INTERVAL}"
+      - "SPEEDTEST_HOST=${SPEEDTEST_HOST}"
