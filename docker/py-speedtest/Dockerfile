@@ -10,5 +10,6 @@ ENV INFLUXDB_DB="speedtest" \
 COPY . .
 
 RUN pip install speedtest-cli
+run apt install jq
 
 CMD [ "bash", "run.sh" ]
