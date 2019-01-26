@@ -3,9 +3,9 @@
 while :; do
 	echo "[Info][$(date)] Starting speedtest..."
 	JSON=$(speedtest-cli --json)
-	DOWNLOAD=$(echo "${JSON}" | json download)
-	UPLOAD=$(echo "$JSON" | json upload)
-	PING=$(echo "${JSON}" | json ping)
+	DOWNLOAD=$(echo "${JSON}" | jq '.download')
+	UPLOAD=$(echo "$JSON" | jq '.upload')
+	PING=$(echo "${JSON}" | jq '.ping')
 	echo "[Info][$(date)] Speedtest results - Download: ${DOWNLOAD}, Upload: ${UPLOAD}, Ping: ${PING}"
 	curl -sL -XPOST "${INFLUXDB_URL}/write?db=${INFLUXDB_DB}" --data-binary "download,host=${SPEEDTEST_HOST} value=${DOWNLOAD}"
 	curl -sL -XPOST "${INFLUXDB_URL}/write?db=${INFLUXDB_DB}" --data-binary "upload,host=${SPEEDTEST_HOST} value=${UPLOAD}"
