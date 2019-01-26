@@ -29,10 +29,10 @@ services:
       - "GF_SECURITY_ADMIN_PASSWORD=admin"
       - "GF_AUTH_ANONYMOUS_ENABLED=true"
 
-  speedtest:
+  py-speedtest:
     restart: always
-    container_name: speedtest
-    build: ./docker/speedtest
+    container_name: py-speedtest
+    build: ./docker/py-speedtest
     links:
       - "influxdb:influxdb"
     environment:

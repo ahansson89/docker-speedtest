@@ -1,4 +1,4 @@
-FROM node:8
+FROM python:2
 MAINTAINER Jonas Friedmann <j@frd.mn>
 
 WORKDIR /usr/src/app
@@ -10,6 +10,6 @@ ENV INFLUXDB_DB="speedtest" \
 
 COPY . .
 
-RUN npm install -g speed-test json
+RUN pip install speedtest-cli
 
-CMD [ "npm", "start" ]
+CMD [ "python", "start" ]
