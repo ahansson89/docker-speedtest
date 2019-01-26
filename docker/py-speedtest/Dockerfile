@@ -1,4 +1,4 @@
-FROM python:2
+FROM python:3
 MAINTAINER Jonas Friedmann <j@frd.mn>
 
 WORKDIR /usr/src/app
