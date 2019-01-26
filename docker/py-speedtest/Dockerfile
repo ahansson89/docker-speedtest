@@ -1,5 +1,4 @@
 FROM python:3
-MAINTAINER Jonas Friedmann <j@frd.mn>
 
 WORKDIR /usr/src/app
 
@@ -12,4 +11,4 @@ COPY . .
 
 RUN pip install speedtest-cli
 
-CMD [ "python", "start" ]
+CMD [ "bash", "run.sh" ]

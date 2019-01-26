@@ -2,7 +2,7 @@
 
 while :; do
 	echo "[Info][$(date)] Starting speedtest..."
-	JSON=$(speedtest --json)
+	JSON=$(speedtest-cli --json)
 	DOWNLOAD=$(echo "${JSON}" | json download)
 	UPLOAD=$(echo "$JSON" | json upload)
 	PING=$(echo "${JSON}" | json ping)
