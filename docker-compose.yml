@@ -12,7 +12,7 @@ services:
     environment:
       - "INFLUXDB_ADMIN_USER=admin"
       - "INFLUXDB_ADMIN_PASSWORD=password"
-      - "INFLUXDB_DB=speedtest; CREATE DATABASE solar;"
+      - INFLUXDB_DB: speedtest; CREATE DATABASE solar;
 
   grafana:
     restart: always
