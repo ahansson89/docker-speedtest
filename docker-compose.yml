@@ -20,6 +20,7 @@ services:
     container_name: grafana
     volumes:
       - "./docker/grafana/provisioning:/etc/grafana/provisioning"
+      - "./data/grafana:/var/lib/grafana"
     ports:
       - "${GRAFANA_PORT}:3000"
     links:
